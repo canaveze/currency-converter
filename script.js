@@ -12,11 +12,11 @@ const translations = {
         'errorInvalid': 'Por favor, insira um valor válido.',
         'errorSelection': 'Selecione pelo menos uma moeda de destino diferente da origem.',
         'currencies': {
-            'BRL': 'Real Brasileiro',
-            'USD': 'Dólar Americano',
+            'BRL': 'Real',
+            'USD': 'Dólar',
             'EUR': 'Euro',
             'GBP': 'Libra Esterlina',
-            'JPY': 'Iene Japonês'
+            'JPY': 'Iene'
         }
     },
     'en': {
@@ -31,11 +31,11 @@ const translations = {
         'errorInvalid': 'Please enter a valid amount.',
         'errorSelection': 'Select at least one target currency different from source.',
         'currencies': {
-            'BRL': 'Brazilian Real',
-            'USD': 'US Dollar',
+            'BRL': 'Real',
+            'USD': 'Dollar',
             'EUR': 'Euro',
-            'GBP': 'British Pound',
-            'JPY': 'Japanese Yen'
+            'GBP': 'Pound',
+            'JPY': 'Yen'
         }
     }
 };
@@ -250,45 +250,45 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
             
-            function displayResults(originalAmount, originalCurrency, conversions) {
-                resultsContainer.innerHTML = '';
-                
-                // Adicionar o valor original como primeiro card
-                const originalCard = document.createElement('div');
-                originalCard.className = 'result-card';
-                originalCard.innerHTML = `
-                    <div class="result-info">
-                        <span class="result-flag">${currencyFlags[originalCurrency]}</span>
-                        <div>
-                            <div class="result-value">${originalAmount.toFixed(2)}</div>
-                            <div class="result-currency">${currencyNames[originalCurrency]} (${originalCurrency})</div>
-                        </div>
-                    </div>
-                    <div class="result-arrow"></div>
-                `;
-                resultsContainer.appendChild(originalCard);
-                
-                // Adicionar os resultados convertidos
-                conversions.forEach(conversion => {
-                    const card = document.createElement('div');
-                    card.className = 'result-card';
-                    card.innerHTML = `
-                        <div class="result-info">
-                            <span class="result-flag">${currencyFlags[conversion.currency]}</span>
-                            <div>
-                                <div class="result-value">${conversion.amount.toFixed(2)}</div>
-                                <div class="result-currency">${currencyNames[conversion.currency]} (${conversion.currency})</div>
-                            </div>
-                        </div>
-                        <div class="result-rate">
-                            1 ${originalCurrency} = ${(conversion.amount / originalAmount).toFixed(6)} ${conversion.currency}
-                        </div>
-                    `;
-                    resultsContainer.appendChild(card);
-                });
-                
-                resultsSection.style.display = 'block';
-            }
+function displayResults(originalAmount, originalCurrency, conversions) {
+    resultsContainer.innerHTML = '';
+    
+    // Adicionar o valor original como primeiro card
+    const originalCard = document.createElement('div');
+    originalCard.className = 'result-card';
+    originalCard.innerHTML = `
+        <div class="result-info">
+            <span class="result-flag">${currencyFlags[originalCurrency]}</span>
+            <div>
+                <div class="result-value">${originalAmount.toFixed(2)}</div>
+                <div class="result-currency">(${originalCurrency})</div>
+            </div>
+        </div>
+        <div class="result-arrow"></div>
+    `;
+    resultsContainer.appendChild(originalCard);
+    
+    // Adicionar os resultados convertidos
+    conversions.forEach(conversion => {
+        const card = document.createElement('div');
+        card.className = 'result-card';
+        card.innerHTML = `
+            <div class="result-info">
+                <span class="result-flag">${currencyFlags[conversion.currency]}</span>
+                <div>
+                    <div class="result-value">${conversion.amount.toFixed(2)}</div>
+                    <div class="result-currency">(${conversion.currency})</div>
+                </div>
+            </div>
+            <div class="result-rate">
+                1 ${originalCurrency} = ${(conversion.amount / originalAmount).toFixed(6)} ${conversion.currency}
+            </div>
+        `;
+        resultsContainer.appendChild(card);
+    });
+    
+    resultsSection.style.display = 'block';
+}
             
             function showError(message) {
                 errorMessage.textContent = message;
@@ -303,4 +303,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
                 selectedCurrencies = [];
             });
-        })
+
+             // Inicialização do idioma (adicione isso no final do event listener)
+    const savedLang = localStorage.getItem('appLanguage') || 'pt-BR';
+    changeLanguage(savedLang);
+    
+    // Event listeners para os botões de idioma
+    document.querySelectorAll('.lang-option').forEach(option => {
+        option.addEventListener('click', function(e) {
+            e.preventDefault();
+            const lang = this.dataset.lang;
+            localStorage.setItem('appLanguage', lang);
+            changeLanguage(lang);
+                    });
+    });
+})

@@ -76,6 +76,7 @@
             flex-direction: column;
             gap: 8px;
         }
+
         
         label {
             font-weight: 500;
@@ -258,40 +259,56 @@
             }
         }
 
-        .language-switcher {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-left: auto; /* Ajuste conforme necessário */
-        }
+.language-switcher {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 100;
+}
 
-        .language-switcher .flag {
-            width: 24px;
-            height: 24px;
-            cursor: pointer;
-            transition: transform 0.2s ease, filter 0.3s ease;
-            filter: grayscale(100%);
-            object-fit: cover;
-            border-radius: 50%;
-        }
+.language-switcher .flag {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    transition: transform 0.2s ease, filter 0.3s ease;
+    filter: grayscale(100%);
+    object-fit: cover;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
 
-        .language-switcher .lang-option.active .flag {
-            filter: grayscale(0%);
-            transform: scale(1.1);
-        }
+.language-switcher .lang-option.active .flag {
+    filter: grayscale(0%);
+    transform: scale(1.1);
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
 
-        .language-switcher .lang-option:hover .flag {
-            transform: scale(1.1);
-        }
+.language-switcher .lang-option:hover .flag {
+    transform: scale(1.1);
+}
 
-        @media (max-width: 768px) {
-            .language-switcher {
-                margin: 15px 0;
-                justify-content: center;
-            }
-            
-            .language-switcher .flag {
-                width: 20px;
-                height: 20px;
-            }
-        }
+/* Ajuste para o título quando o seletor de idioma está presente */
+.container h1 {
+    margin-right: 60px; /* Espaço para o seletor de idioma */
+    position: relative;
+}
+
+@media (max-width: 768px) {
+    .language-switcher {
+        top: 15px;
+        right: 15px;
+    }
+    
+    .language-switcher .flag {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .container h1 {
+        margin-right: 50px;
+        font-size: 1.5rem;
+    }
+}

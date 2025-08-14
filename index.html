@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Currency Converter</title>
-    <!--<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-
+    
 </head>
 <body>
     <div class="container">
@@ -31,20 +31,22 @@
                 <div class="form-group">
                     <label for="from-currency">De</label>
                     <select id="from-currency">
-                    <option value="BRL">Real Brasileiro (BRL)</option>
-                    <option value="USD">Dólar Americano (USD)</option>
+                    <option value="BRL">Real (BRL)</option>
+                    <option value="USD">Dólar (USD)</option>
                     <option value="EUR">Euro (EUR)</option>
-                    <option value="GBP">Libra Esterlina (GBP)</option>
-                    <option value="JPY">Iene Japonês (JPY)</option>
+                    <option value="GBP">Libra (GBP)</option>
+                    <option value="JPY">Iene (JPY)</option>
                 </select>
                 </div>
                 
                 <div class="form-group">
                     <label for="to-currency">Para</label>
                     <select id="to-currency">
-                        <option value="USD">Dólar Americano (USD)</option>
-                        <option value="EUR">Euro (EUR)</option>
-                        <option value="BRL">Real Brasileiro (BRL)</option>
+                    <option value="BRL">Real (BRL)</option>
+                    <option value="USD">Dólar (USD)</option>
+                    <option value="EUR">Euro (EUR)</option>
+                    <option value="GBP">Libra (GBP)</option>
+                    <option value="JPY">Iene (JPY)</option>
                     </select>
                 </div>
             </div>
@@ -76,7 +78,7 @@
         </div>
     </div>
     <script src="script.js"></script>
-        <script>
+    <script>
         // Inicialização do sistema de idiomas
         document.addEventListener('DOMContentLoaded', function() {
             // Carrega o idioma salvo ou usa pt-BR como padrão
